@@ -206,4 +206,5 @@ picture = partial(tag, 'img', cls='pic-frame')   # 可以指明要赋值的参�
 picture(src='wumpus.jpeg')
 print(picture)
 
+import pdb;pdb.set_trace()
 
