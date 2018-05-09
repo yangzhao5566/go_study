@@ -111,4 +111,7 @@ inspect.getmembers 函数用于获取对象（这里是 promotions 模块）的�
 获取模块中的函数。
 """
 
+promos = [globals()[name] for name in globals() if name.endswith('_promo')
+          and name != 'best_promo']
+
 import pdb;pdb.set_trace()

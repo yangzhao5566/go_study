@@ -42,7 +42,7 @@ class MyClass(object):
     __metaclass__ = Singleton3
 
 # py3 
-class MyClass(metaclass=Singleton3)
+class MyClass(metaclass=Singleton3):
     pass
 #  总结下 元类的作用：
 # 拦截类的创建
