@@ -2,6 +2,11 @@
 
 import pika
 import sys
+"""
+队列（queue）是我们想要去的位于纽约的目的地
+交换机（exchange）是JFK机场
+绑定（binding）就是JFK机场到目的地的路线。能够到达目的地的路线可以是一条或者多条
+"""
 
 # http://www.01happy.com/python-rabbitmq-routing-patten/
 connection = pika.BlockingConnection(
