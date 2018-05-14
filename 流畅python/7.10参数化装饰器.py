@@ -50,6 +50,13 @@ def clock(fmt=DEFAULT_FMT):  # 1
 str。
 """
 
+"""
+简单来说，装饰器使用的时候不加括号，则默认的是把func传进去， 而带括号则代表在把
+func当参数的函数的外层又包装了一层
+@register 相当于 register(func)。那么@register() 相当于 register()(func)
+第二个先调用一次外层，返回结果再传func进去
+"""
+
 if __name__ == '__main__':
     @clock()
     def snooze(seconds):
