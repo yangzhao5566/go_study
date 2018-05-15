@@ -96,6 +96,3 @@ class TomboList(list):
 
     def inspect(self):
         return tuple(sorted(self))
-
-
-import pdb;pdb.set_trace()
