@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 )
 
 // 类型别名
-
 type (
 	byte int8
 	rune int32
@@ -20,7 +20,7 @@ func main() {
 	var c []int 
 	var d [1] bool
 	var g int = 1
-	var aa float32 = 100.1
+	var aa float32 = 65.1
 	h6 := int(aa)
 	h := 1
 	f = "中文类型名"
@@ -37,4 +37,7 @@ func main() {
 	fmt.Println(h1, h2, h3)
 	fmt.Println(h4)
 	fmt.Println(h6)
+	fmt.Println(string(h6))
+	fmt.Println(strconv.Atoi("65"))
+	fmt.Println(strconv.Itoa(h6))
 }
