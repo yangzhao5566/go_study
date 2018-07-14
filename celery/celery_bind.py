@@ -27,3 +27,13 @@ def long_task(self):
 
     return {'current': 100, 'total': 100, 'status': 'Task completed!',
             'result': 42}
+
+
+@celery.task(bind=True)
+def long_time(self):
+    i = 0
+    while i < 100:
+        i += 1
+        self.update_state(state="PROGRESS", meta={"i": i})
+        time.sleep(0.2)
+    return "finished"
