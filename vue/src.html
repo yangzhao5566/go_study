@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>src </title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
 </head>
 <body>
-$END$
+    <div id="app">
+        <p>{{ message }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: "Hello World"
+            }
+        })
+    </script>
 </body>
 </html>
