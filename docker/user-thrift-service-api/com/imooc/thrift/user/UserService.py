@@ -302,7 +302,6 @@ class getUserById_result(object):
      - success
     """
 
-
     def __init__(self, success=None,):
         self.success = success
 
