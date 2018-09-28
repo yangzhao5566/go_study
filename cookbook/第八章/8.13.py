@@ -76,5 +76,65 @@ class Stock:
         self.price = price
 
 
+### 也可以用装饰器来完成上述操作
+
+def check_attributes(**kwargs):
+    def decorate(cls):
+        for key, value in kwargs.items():
+            if isinstance(value, Descriptor):
+                value.name = key
+                setattr(cls, key, value)
+            else:
+                setattr(cls, key, value(key))
+
+        return cls
+    return decorate
+
+
+@check_attributes(name=SizedString(size=8),
+                  shares=UnsignedInterger,
+                  price=UnsignedFloat)
+class Stock:
+    def __init__(self, name, shares, price):
+        self.name = name
+        self.shares = shares
+        self.price = price
+
+
+####或者这么写############
+class checkedmeta(type):
+    def __new__(cls, clsname, bases, methods):
+        for key, value in methods.items():
+            if isinstance(value, Descriptor):
+                value.name = key
+            return type.__new__(cls, clsname, bases, methods)
+
+
+class Stock2(metaclass=checkedmeta):
+    name = SizedString(size=8)
+    shares = UnsignedInterger()
+    price = UnsignedFloat()
+
+    def __init__(self, name, shares, price):
+        self.name = name
+        self.shares = shares
+        self.price = price
+
+
+### 装饰器写法 ###
+
+def Typed(expected_type, cls=None):
+    if cls is None:
+        return lambda cls: TypeError(expected_type, cls)
+    super_set = cls.__set__
+
+    def __set__(self, instance, value):
+        if not isinstance(value, expected_type):
+            raise TypeError('expected ' + str(expected_type))
+        super_set(self, instance, value)
+
+    cls.__set__ = __set__
+    return cls
+
 
 
